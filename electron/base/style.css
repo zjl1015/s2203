@@ -1,0 +1,27 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+ 
+}
+/* 可以拖动 html 元素 */
+html{
+  
+  -webkit-app-region:drag;
+}
+/* 文本域不能拖动 */
+textarea{
+  -webkit-app-region:no-drag;
+}
+
+body{
+  width: 100vw;
+  height: 100vh;
+}
+h1{
+  background-color: red;
+  height: 100vh;
+  border-radius: 50%;
+  overflow: hidden;
+}
