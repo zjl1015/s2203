@@ -20,6 +20,11 @@
   - window-all-closed
   - activate
 
+## 框架
+
+- electron-vite-vue
+- electron-react-boilerplate
+
 ## 第三方插件
 
 - open-cli-tools/concurrently
