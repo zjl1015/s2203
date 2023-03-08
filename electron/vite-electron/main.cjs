@@ -16,6 +16,7 @@ const createWindow = () => {
 app.whenReady().then(() => {
   createWindow();
 });
+app.webContent.toggleDevTools();
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();

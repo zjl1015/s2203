@@ -7,8 +7,18 @@
 
 ## electron 中的模块
 
-- BrowerWindow 窗口相关
+- BrowerWindow 窗口相关模块
+  - width
+  - height
+  - transparent
+  - frame
+  - awalysOnTop
 - app 主进程
+  - app.quit()
+  - app.webContent.toggleDevTools()
+- 事件
+  - window-all-closed
+  - activate
 
 ## 第三方插件
 
