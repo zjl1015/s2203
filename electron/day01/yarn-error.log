@@ -1,0 +1,44 @@
+Arguments: 
+  D:\software\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add electron-squirrel-startup
+
+PATH: 
+  D:\codeDemo\study\s2203\electron\day01\node_modules\.bin;D:\codeDemo\study\s2203\electron\node_modules\.bin;D:\codeDemo\study\s2203\node_modules\.bin;D:\codeDemo\study\node_modules\.bin;D:\codeDemo\node_modules\.bin;D:\node_modules\.bin;D:\software\nodejs\node_modules\npm\node_modules\@npmcli\run-script\lib\node-gyp-bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\software\jdk\bin;D:\software\nodejs\;D:\software\wechat_devtools\微信web开发者工具\dll;C:\Pro;ram Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;D:\software\git\Git\cmd;D:\software\git\Git\usr\bin;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\software\hbuilderX\HBuilderX.3.3.10.20220124.full\HBuilderX\plugins\launcher\tools\adbs;C:\Ruby26-x64\bin;C:\Users\Administrator\AppData\Roaming\npm;D:\software\vscode\Microsoft VS Code\bin;C:\Users\Administrator\.dotnet\tools;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\codeDemo\study\s2203\electron\day01\node_modules\.bin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.13.2
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile 'C:\Users\Administrator\AppData\Local\Yarn\Cache\v6\npm-jsonfile-6.1.0-bc55b2634793c679ec6403094eb13698a6ec0aae-integrity\node_modules\jsonfile\package.json' -> 'D:\codeDemo\study\s2203\electron\day01\node_modules\@electron\notarize\node_modules\jsonfile\package.json'
+
+npm manifest: 
+  {
+    "name": "day01",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "dev": "nodemon  --exec npx electron .",
+      "start": "electron-forge start",
+      "package": "electron-forge package",
+      "make": "electron-forge make"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {},
+    "devDependencies": {
+      "@electron-forge/cli": "^6.0.5"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
