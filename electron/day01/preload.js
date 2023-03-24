@@ -6,7 +6,7 @@
  * 
  */
 
-window.addEventListener('DOMContentLoaded',()=>{
+/* window.addEventListener('DOMContentLoaded',()=>{
   const replaceText = (selector,text)=>{
     const element = document.querySelector(selector)
     if(element) {
@@ -17,4 +17,14 @@ window.addEventListener('DOMContentLoaded',()=>{
   for (const selector of ['chrome','node','electron']) {
     replaceText("#"+selector,process.versions[selector])
   }
+}) */
+
+const {contextBridge,ipcRenderer} = require('electron')
+
+// 将 versions 对象暴露给渲染进程
+contextBridge.exposeInMainWorld('versions',{
+  node:()=>process.versions.node,
+  electron:()=>process.versions.electron,
+  chrome:()=>process.versions.chrome,
+  ping:()=>ipcRenderer.invoke('ping')
 })
