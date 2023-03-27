@@ -20,3 +20,21 @@ async function func(){
 }
 
 func()
+
+
+
+window.addEventListener('DOMContentLoaded',()=>{
+  const btn = document.querySelector('#btn')
+  const titleInput = document.querySelector('#title')
+  const btnOpenFile = document.querySelector('#open-file')
+  const filePathElement = document.querySelector('#filepath')
+  btn.addEventListener('click',()=>{
+    const title = titleInput.value
+    window.electronApi.setTitle(title)
+  })
+
+  btnOpenFile.addEventListener('click',async ()=>{
+    const filePath = await window.electronApi.openFile()
+    filePathElement.innerText = filePath
+  })
+})

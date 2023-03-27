@@ -28,3 +28,8 @@ contextBridge.exposeInMainWorld('versions',{
   chrome:()=>process.versions.chrome,
   ping:()=>ipcRenderer.invoke('ping')
 })
+
+contextBridge.exposeInMainWorld('electronApi',{
+  setTitle:(title)=>ipcRenderer.send('set-title',title),
+  openFile:()=>ipcRenderer.invoke('dialog:openFile')
+})
