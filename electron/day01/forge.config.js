@@ -1,10 +1,17 @@
 module.exports = {
-  packagerConfig: {},
+  packagerConfig: {
+     icon: '/images/icon' // no file extension required
+  },
   rebuildConfig: {},
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+         // An URL to an ICO file to use as the application icon (displayed in Control Panel > Programs and Features).
+        //  iconUrl: 'https://url/to/icon.ico',
+         // The ICO file to use as the icon for the generated Setup.exe
+         setupIcon: '/images/icon.ico',
+      },
     },
     {
       name: '@electron-forge/maker-zip',
@@ -12,7 +19,11 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-deb',
-      config: {},
+      config: {
+        options: {
+          icon: '/images/icon.png'
+        }
+      },
     },
     {
       name: '@electron-forge/maker-rpm',

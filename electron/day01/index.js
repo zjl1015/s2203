@@ -9,6 +9,7 @@ const createWindow = ()=>{
     height: 300,
     y:100,
     x:1600,
+    icon:'/images/icon.png',
     alwaysOnTop:true,// 总是在桌面上层
     webPreferences:{
       preload:path.resolve(__dirname,'preload.js')
