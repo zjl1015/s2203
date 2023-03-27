@@ -1,7 +1,8 @@
 // app 模块，控制应用程序的事件生命周期
 // BrowserWindow 模块，创建和管理应用程序窗口
-const { app, BrowserWindow,ipcMain,dialog } = require("electron");
-const path = require('path')
+const { app, BrowserWindow,ipcMain,dialog,Menu } = require("electron");
+const path = require('path');
+const { mainModule } = require("process");
 async function handleDialogOpen(){
   const {canceled,filePaths} =await dialog.showOpenDialog()
   if(canceled){
@@ -23,11 +24,39 @@ const createWindow = ()=>{
       preload:path.resolve(__dirname,'preload.js')
     }
   });
+  const menu = Menu.buildFromTemplate([
+    {
+      label:app.name,
+      submenu:[
+        {
+          label:'Increment',
+          click:()=>win.webContents.send('update-counter',1)
+        },
+        {
+          label:'Decrement',
+          click:()=>win.webContents.send('update-counter',-1)
+        }
+      ]
+    }
+  ])
+
+  Menu.setApplicationMenu(menu)
+  win.webContents.openDevTools()
   // 在加载页面前设置监听自定义事件
   ipcMain.handle('ping',()=>'ipc ping')
   ipcMain.on('set-title',(event,title)=>{
     const win = BrowserWindow.fromWebContents(event.sender)
     win.setTitle(title)
+  })
+
+  // 旧方式双向通信
+  ipcMain.on('message',(event,arg)=>{
+    console.log("arg==>",arg);
+    event.reply('message-back','123')
+  })
+  // 旧方式2
+  ipcMain.on('message2',(event,arg)=>{
+    event.returnValue = arg+'123'
   })
   // 把页面加载到当前窗口
   win.loadFile("index.html");

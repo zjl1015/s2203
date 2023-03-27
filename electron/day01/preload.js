@@ -31,5 +31,17 @@ contextBridge.exposeInMainWorld('versions',{
 
 contextBridge.exposeInMainWorld('electronApi',{
   setTitle:(title)=>ipcRenderer.send('set-title',title),
-  openFile:()=>ipcRenderer.invoke('dialog:openFile')
+  openFile:()=>ipcRenderer.invoke('dialog:openFile'),
+  handleCounter:(callback)=>ipcRenderer.on('update-counter',callback)
 })
+
+// 旧方式双向通信
+
+ipcRenderer.send('message','hello world')
+ipcRenderer.on('message-back',(event,args)=>{
+  console.log(args);
+})
+// 旧方式2
+const val = ipcRenderer.sendSync('message2','this is sendSync')
+console.log("val===>",val);
+

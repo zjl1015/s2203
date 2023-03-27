@@ -28,6 +28,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   const titleInput = document.querySelector('#title')
   const btnOpenFile = document.querySelector('#open-file')
   const filePathElement = document.querySelector('#filepath')
+  const countElement = document.querySelector('#count')
   btn.addEventListener('click',()=>{
     const title = titleInput.value
     window.electronApi.setTitle(title)
@@ -36,5 +37,14 @@ window.addEventListener('DOMContentLoaded',()=>{
   btnOpenFile.addEventListener('click',async ()=>{
     const filePath = await window.electronApi.openFile()
     filePathElement.innerText = filePath
+  })
+
+
+  window.electronApi.handleCounter((event,val)=>{
+    const oldValue = Number(countElement.innerText)
+    const newValue = oldValue + val
+    countElement.innerText = newValue
+    event.sender.send('counter-value',newValue)
+
   })
 })
