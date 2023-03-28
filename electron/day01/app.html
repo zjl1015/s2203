@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>app</h1>
+  <script>
+    const {ipcRenderer} = require('electron')
+    ipcRenderer.send('request-worker-channel')
+    ipcRenderer.once('provide-worker-channel',(event)=>{
+      const [port] = event.ports
+      port.onmessage = (event)=>{
+        console.log('received result:',event.data);
+      }
+      port.postMessage(21)
+    })
+  </script>
+</body>
+</html>

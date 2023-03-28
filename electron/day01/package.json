@@ -1,10 +1,10 @@
 {
-  "name": "day01",
+  "name": "text",
   "version": "1.0.0",
   "description": "这是一个demo",
-  "main": "index.js",
+  "main": "./example03/main.js",
   "scripts": {
-    "dev": "nodemon  --exec npx electron .",
+    "dev": "nodemon --exec npx electron ./example03/main.js",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"

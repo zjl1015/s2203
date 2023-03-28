@@ -1,8 +1,7 @@
 // app 模块，控制应用程序的事件生命周期
 // BrowserWindow 模块，创建和管理应用程序窗口
-const { app, BrowserWindow,ipcMain,dialog,Menu } = require("electron");
+const { app, BrowserWindow,ipcMain,dialog,Menu ,MessageChannelMain} = require("electron");
 const path = require('path');
-const { mainModule } = require("process");
 async function handleDialogOpen(){
   const {canceled,filePaths} =await dialog.showOpenDialog()
   if(canceled){
@@ -20,10 +19,27 @@ const createWindow = ()=>{
     x:1600,
     icon:'/images/icon.png',
     alwaysOnTop:true,// 总是在桌面上层
+    // show:false,
     webPreferences:{
+      // contextIsolation:false,
       preload:path.resolve(__dirname,'preload.js')
     }
   });
+  const secondWin = new BrowserWindow({
+    // show:false,
+    webPreferences:{
+      // contextIsolation:false,
+      preload:path.resolve(__dirname,'secondPreload.js')
+    }
+  })
+
+  const {port1,port2} = new MessageChannelMain()
+  win.once('ready-to-show',()=>{
+    win.webContents.postMessage('port',null,[port1])
+  })
+  secondWin.once('ready-to-show',()=>{
+    secondWin.webContents.postMessage('port',null,[port2])
+  })
   const menu = Menu.buildFromTemplate([
     {
       label:app.name,
@@ -60,6 +76,7 @@ const createWindow = ()=>{
   })
   // 把页面加载到当前窗口
   win.loadFile("index.html");
+  secondWin.loadFile('index.html')
 }
 // 只有在 app 模块的 ready 事件被激发后才能创建浏览器窗口，app.whenReady() api 监听 ready 事件
 app.whenReady().then(() => {
@@ -75,4 +92,15 @@ app.whenReady().then(() => {
 app.on("window-all-closed",()=>{
   // darwin 是 MacOS ,因为 macOS 并没有真正关闭应该用
   if(process.platform!=='darwin') app.quit()
+})
+
+
+
+ipcMain.on('port',(event)=>{
+  const port = event.ports[0]
+  port.on('message',(event)=>{
+    const data = event.data
+    console.log("data===>",data);
+  })
+  port.start()
 })

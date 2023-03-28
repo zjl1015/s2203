@@ -2,6 +2,8 @@
 //   document.body.innerHTML = "你好啊哈哈"
 // })
 
+// const { ipcRenderer } = require("electron");
+
 window.addEventListener('DOMContentLoaded',()=>{
   const replaceText = (selector,version)=>{
     document.querySelector(selector).innerText = version
@@ -48,3 +50,18 @@ window.addEventListener('DOMContentLoaded',()=>{
 
   })
 })
+
+
+// 消息端口
+const channel = new MessageChannel()
+console.log("channel===>",channel);
+// 消息发送到 port1 将被 port2 接收
+const port1 = channel.port1
+const port2 = channel.port2
+console.log("port1=%o,port2=%o",port1,port2);
+
+port2.postMessage({answer:42})
+// ipcRenderer.postMessage('port',null,[port1])
+
+
+// window.electronMessagePort.postMessage('hello electron port')
