@@ -10,6 +10,23 @@
   <h1>Web Bluetooth API</h1>
   <button id="clickme">Test Bluetooth</button>
   <p>Currently selected bluetooth device : <strong id="device-name"></strong></p>
+  <!-- 访问 HID 设备 -->
+  <button id="btn">Test WebHID</button>
+  <h3>HID devices automatically granted access via <i>setDevicePermissionOnHandler</i></h3>
+  <div id="granted-devices"></div>
+  <h3>HID devices automatically granted access via <i>select-hid-device</i></h3>
+  <div id="granted-devices2"></div>
+  <!-- 访问 串口 设备 -->
+  <button id="btnSerial">Test Serial</button>
+  <p>Matching Arduino Uno device : <strong id="serial-device-name"></strong></p>
+  <!-- 访问 USB 设备 -->
+  <button id="clickUSB">Test WebUSB</button>
+
+  <h3>USB devices automatically granted access via <i>setDevicePermissionHandler</i></h3>
+  <div id="granted-devices-usb"></div>
+  
+  <h3>USB devices automatically granted access via <i>select-usb-device</i></h3>
+  <div id="granted-devices2-usb"></div>
   <script src="./renderer.js"></script>
 </body>
 </html>
