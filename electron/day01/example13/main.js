@@ -1,4 +1,5 @@
 const {app,Tray,nativeImage, Menu, BrowserWindow} = require('electron')
+const path = require('path')
 const createWindow = ()=>{
   const mainWindow = new BrowserWindow({
     width:300,
@@ -13,7 +14,8 @@ const createWindow = ()=>{
 let tray
 app.whenReady().then(()=>{
   createWindow()
-  const icon = nativeImage.createFromPath('../images/head.png')
+  const icon = nativeImage.createFromPath(path.join(__dirname,'../images/head.png'))
+  // console.log('path==>',path.join(__dirname,'../images/head.png'));
   tray = new Tray(icon)
   const contextMenu = Menu.buildFromTemplate([
     {

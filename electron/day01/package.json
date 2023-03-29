@@ -2,9 +2,9 @@
   "name": "text",
   "version": "1.0.0",
   "description": "这是一个demo",
-  "main": "./example13/main.js",
+  "main": "./example14/main.js",
   "scripts": {
-    "dev": "nodemon --exec npx electron ./example13/main.js",
+    "dev": "nodemon --exec npx electron ./example14/main.js",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"
