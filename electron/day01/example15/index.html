@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  <title>自定义窗口</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    html{
+      -webkit-app-region:drag;
+      -webkit-user-select: none;
+    }
+    body{
+      width: 100vw;
+      height: 100vh;
+    }
+    h1{
+      border-radius: 50%;
+      height: 100vh;
+      background-color: aqua;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <h1></h1>
+  <!-- <button id="clickThroughElement">clickThroughElement</button> -->
+  <script src="./renderer.js"></script>
+</body>
+
+</html>
