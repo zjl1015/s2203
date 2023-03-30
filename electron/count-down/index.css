@@ -1,0 +1,23 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+html{
+  /* 是整个窗口可以被拖动 */
+  -webkit-app-region:drag;
+  /* 拖动过程中，文字不被选中 */
+  -webkit-user-select: none;
+}
+body{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.count-down{
+  text-align: center;
+  line-height: 100vh;
+  height: 100vh;
+  background-color:aquamarine;
+  box-shadow: inset 0px -1px 2px red;
+  border-radius: 5px;
+}
