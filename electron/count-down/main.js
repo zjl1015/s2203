@@ -9,11 +9,12 @@ const createWindow = ()=>{
     // height:40,
     width:300,
     height:300,
-    x:1600,
+    x:1200,
     y:100,
     alwaysOnTop:true,
     frame:false,
     transparent:true,
+    icon:path.join(__dirname,'icons/count-down.png'),
     webPreferences:{
       preload:path.join(__dirname,'preload.js')
     }
