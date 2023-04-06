@@ -1,4 +1,5 @@
 
+
 function countDown(time,ele) {
   const [minutes, seconds] = time.split(':');
   let remainingTime = (parseInt(minutes) * 60) + parseInt(seconds);
@@ -22,4 +23,15 @@ function countDown(time,ele) {
 window.addEventListener('DOMContentLoaded',()=>{
   const countDownEle = document.querySelector('#count-down')
   countDown('08:00',countDownEle)
+})
+
+// // 用户右键菜单
+window.addEventListener('contextmenu',(event)=>{
+  event.preventDefault()
+  window.electronApi.showCustomMenu()
+})
+
+document.querySelector('#count-down').addEventListener('contextmenu',(event)=>{
+  console.log("123");
+  event.preventDefault()
 })
