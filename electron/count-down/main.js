@@ -7,7 +7,8 @@ const createWindow = ()=>{
     y:100,
     alwaysOnTop:true,
     frame:false,
-    transparent:true
+    transparent:true,
+    resizable:false
   })
   // mainWindow.webContents.openDevTools()
   mainWindow.loadFile('index.html')
