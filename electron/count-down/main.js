@@ -9,7 +9,7 @@ const createWindow = ()=>{
     // height:40,
     width:300,
     height:300,
-    x:1200,
+    x:1600,
     y:100,
     alwaysOnTop:true,
     frame:false,
@@ -21,6 +21,7 @@ const createWindow = ()=>{
   })
   mainWindow.webContents.openDevTools()
   mainWindow.loadFile('index.html')
+  // 无边框窗口无效
   mainWindow.on('system-context-menu',(event)=>{
     event.preventDefault()
     console.log("system-context-menu ----");
