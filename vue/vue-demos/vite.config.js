@@ -11,5 +11,10 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
     extensions:['.vue','.js']
+  },
+  server:{
+    host:'localhost',
+    port:8080,
+    open:true
   }
 })
