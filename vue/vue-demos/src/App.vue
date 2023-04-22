@@ -76,11 +76,13 @@ const data = [
     ]
   }
 ]
+import Test from './views/Test.vue';
 </script>
 <template>
   <div>
     <!-- <transfer :data="data" right-title="已选择机型"></transfer> -->
-    <Transfer :data="data" right-title="已选机型"></Transfer>
+    <!-- <Transfer :data="data" right-title="已选机型"></Transfer> -->
+    <Test></Test>
   </div>
 </template>
 <style scoped>
