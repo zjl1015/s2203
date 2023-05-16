@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrapper{
+      width: 70%;
+      max-width: 800px;
+      margin:  0 auto;
+    }
+    .hidden{
+      display: none;
+    }
+    video{
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>离线视频播放器案例</h1>
+    <div class="controls">
+      <button class="download">视频下载</button>
+      <button class="abort hidden">取消下载</button>
+      <p class="reports"></p>
+    </div>
+    <div class="videoWrapper hidden">
+      <p>Copyright ©</p>
+    </div>
+  </div>
+  <script>
+    // 本地视频路径
+    let url = "sintel.mp4"
+    
+    const videoWrapper = document.querySelector('.videoWrapper')
+    const downloadBtn = document.querySelector('.download')
+    const abortBtn = document.querySelector('.abort')
+    const reports = document.querySelector('.reports')
+
+    downloadBtn.addEventListener('click',fetchVideo)
+    abortBtn.addEventListener('click',()=>{
+      controller.abort()
+      console.log("下载中断");
+      downloadBtn.classList.remove('hidden')
+    })
+    let controller;
+    let progressAnim;
+    let animCount = 0;
+    function fetchVideo(){
+      // 创建 AbortController 实例对象
+      controller = new AbortController()
+      // 获取与controller相关联的AbortSingal对象
+      const signal = controller.signal
+      // 隐藏下载按钮
+      downloadBtn.classList.add('hidden')
+      // 显示取消下载按钮
+      abortBtn.classList.remove('hidden')
+      reports.textContent = "视频下载中..."
+      fetch(url,{signal})
+      .then(res=>{
+        console.log("res==>",res);
+        if(res.status === 200){
+          // TODO 运行动画
+          runAnimation()
+          setTimeout(() => {
+            console.log("Body used:",res.bodyUsed);
+          }, 1);
+          return res.blob()
+        }else{
+          throw new Error("下载失败")
+        }
+      })
+      .then(blob=>{
+        const video = document.createElement('video')
+        video.setAttribute('controls','')
+        const url = URL.createObjectURL(blob)
+        video.src=url
+        console.log("url====>",url);
+        videoWrapper.appendChild(video)
+
+        // 显示视频
+        videoWrapper.classList.remove('hidden')
+        // 隐藏取消按钮
+        abortBtn.classList.add('hidden')
+        downloadBtn.classList.add('hidden')
+        reports.textContent = "视频准备播放"
+
+      }).catch(e=>{
+        abortBtn.classList.add('hidden')
+        downloadBtn.classList.remove('hidden')
+        reports.textContent = "下载出错："+e.message
+      }).finally(()=>{
+        // clearInterval
+        clearInterval(progressAnim)
+        animCount = 0
+      })
+    }
+
+    function runAnimation(){
+      progressAnim = setInterval(() => {
+        switch(animCount++ & 3){
+          case 0:
+            reports.textContent = "发生下载，正在构建视频播放器"
+            break;  
+          case 1:
+             reports.textContent = "发生下载，正在构建视频播放器."
+            break;
+          case 2:
+             reports.textContent = "发生下载，正在构建视频播放器.."
+            break;
+          case 3:
+             reports.textContent = "发生下载，正在构建视频播放器..."
+            break;
+
+        }
+      }, 300);
+    }
+  </script>
+</body>
+</html>
