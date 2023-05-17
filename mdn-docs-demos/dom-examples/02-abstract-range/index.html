@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>
+    <span>hello world 1</span>
+    <span>hello world 2</span>
+    <span>hello world 3</span>
+    <span>hello world 4</span>
+    <span>hello world 5</span>
+  </p>
+  
+  <!-- 第二部分 -->
+  <div class="container">
+    <div class="header">
+      <img src="" class="sitelogo" alt="">
+      <h1>this is h1 element</h1>
+    </div>
+    <article>
+      <section class="entry" id="entry1">
+        <h2>Section 1: An interesting thing...</h2>
+        <p>A <em>very</em> interesting thing happened on the way to the froum</p>
+        <aside class="callout">
+          <h2>Aside</h2>
+          <p>An interesting aside to share with you...</p>
+        </aside>
+      </section>
+    </article>
+    <pre id="log"></pre>
+  </div>
+
+  <script>
+    const startElem = document.querySelector('p')
+    const endElem = startElem.querySelector('span') 
+    const range = document.createRange()
+    range.setStart(startElem,0)
+    range.setEnd(endElem,1)
+    const contents = range.cloneContents()
+    document.body.appendChild(contents)
+
+    // 第二部分
+    // 1. 拷贝 "An interesting thing.." 到 "ve" 的字符
+    const startNode = document.querySelector("#entry1 h2").childNodes[0]
+    const endNode = document.querySelector("#entry1 p em").childNodes[0]
+    const rangeSec = document.createRange()
+    rangeSec.setStart(startNode,11)
+    rangeSec.setEnd(endNode,2)
+    const contentFrangment = rangeSec.cloneContents()
+    document.body.appendChild(contentFrangment)
+    console.log("document.querySelector('#entry1 p em')=>",document.querySelector("#entry1 p em").childNodes);
+  </script>
+</body>
+</html>
