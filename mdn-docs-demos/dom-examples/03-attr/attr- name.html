@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <base href="http://bufantec.com">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <img src="/upload/test/20230519161801.webp" alt="">
+  <svg xml:lang="en-US" class="struct" height="1" width="1">click me</svg>
+  <label xml:lang="en-US" class="struct" ></label>
+  <div xml:lang="en-US" class="struct" ></div>
+  <label test="initial value" class="struct"></label>
+  <p>
+    <button>show value for &lt;svg&gt;</button>
+    <button>show value for &lt;label&gt;</button>
+    <button>show value for &lt;div&gt;</button>
+    <button>Click me set test to <code>"a new value"</code>...</button>
+  </p>
+  <p>
+    Qualified name of the attribue <code>xml:lang</code>
+    <output id="result">None.</output>
+  </p>
+
+  <script>
+    const elements = document.querySelectorAll('.struct')
+    const buttons = document.querySelectorAll('button')
+    const outputEl = document.querySelector('#result')
+    let i = 0;
+    for(const button of buttons){
+      const element = elements[i]
+      button.addEventListener('click',()=>{
+        const attribute = element.attributes[0]
+        // console.log(element.attributes);
+        // console.log(attribute);
+        // outputEl.value = attribute.name + "==命名空间URI==>"+attribute.namespaceURI + "===localname==>"+attribute.localName+"==prefix==>"+attribute.prefix
+        // outputEl.value = attribute.ownerElement.tagName.toLowerCase()
+        attribute.value = 'a new value'
+        // outputEl.value = attribute.value
+        outputEl.value = attribute.baseURI + "==="+document.location+"----->"+element.baseURI+"----"+document.baseURI
+      })
+      i++
+    }
+
+    console.log(document.childNodes);
+    console.log(document.documentElement === document.childNodes[1]);
+    
+  </script>
+</body>
+
+</html>

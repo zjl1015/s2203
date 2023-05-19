@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="http://bufantec.com">
+  <title>Document</title>
+</head>
+<body>
+  <img width="200" height="300" src="/upload/test/20230519165411.png">
+  <br>
+  <output class="output"></output>
+  <script>
+    const outputEl = document.querySelector('.output')
+    const imgEl = document.querySelector('img')
+    outputEl.value = `
+      文档基 URL：${document.baseURI},
+      元素基 URL：${imgEl.baseURI},
+      文档location:${document.location}
+    `
+  </script>
+</body>
+</html>
