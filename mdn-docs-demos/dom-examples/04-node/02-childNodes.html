@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="http://bufantec.com">
+  <title>Document</title>
+</head>
+<body>
+  <button id="clearBtn" class="btn">clearP</button>
+  <div id="div1"></div>
+  <div class="p-contianer">
+    <!-- 10个p标签 -->
+    <p id="p1">1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+    <p>7</p>
+    <p>8</p>
+    <p>9</p>
+    <p>10</p>
+  </div>
+  <script>
+   const parg = document.querySelector('.p-contianer')
+   // 检查是否包含子元素
+   if(parg.hasChildNodes()){
+    // 通过childNodes属性获取子节点
+    const children = parg.childNodes
+    for(let i = 0;i<children.length;i++){
+      console.log(children[i]);
+    }
+   }
+   clearBtn.addEventListener('click',function(){
+    // 删除所有子节点
+    while(parg.firstChild){
+      parg.removeChild(parg.firstChild)
+    }
+   })
+
+   console.log(document.hasChildNodes());
+   console.log(document.childNodes);
+   console.log(document.documentElement === document.childNodes[1]);
+  </script>
+</body>
+</html>
