@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .son{
+            visibility: hidden;
+        }
+        .grandson{
+            display: none;
+        }
+    </style>
+</head>
+<body><!-- 注释 -->
+    <div id="box">
+        box
+        <div class="son" >
+            son
+            <div class="grandson">grandson</div>
+        </div>
+    </div>
+    <script>
+        
+
+        const grandSonEl = document.querySelector('.grandson')
+        console.log(grandSonEl.ownerDocument);
+        console.log(document);
+        console.log(document.ownerDocument);
+
+        console.log(grandSonEl.parentElement);
+        console.log(grandSonEl.parentNode);
+
+        const box = document.getElementById('box')
+        // box.textContent = "hello world"
+        console.log(box.textContent);
+        console.log(document.documentElement.textContent);
+        console.log(document.documentElement.innerText);
+
+
+    </script>
+</body>
+</html>

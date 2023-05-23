@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><!-- 注释 -->
+    <div id="box">box</div>
+    <script>
+        const divEl = document.getElementById('box')
+        // const divEl = document.querySelector("#box")
+        console.log(divEl);
+        console.log(document.nodeType); // 9
+        console.log(Node.DOCUMENT_NODE);// 9
+
+        console.log(document.body.nodeType); // 1
+        console.log(document.documentElement.nodeType);// 1
+        console.log(Node.ELEMENT_NODE);// 1
+
+        console.log(document.doctype.nodeType); // 10
+        console.log(Node.DOCUMENT_TYPE_NODE);// 10
+
+        // console.log(divEl.attributes[0].nodeType); // 2
+        console.log(Node.ATTRIBUTE_NODE); // 2
+
+        console.log(divEl.firstChild.nodeType); // 3
+        console.log(Node.TEXT_NODE);// 3
+
+        const fragment = document.createDocumentFragment()
+        console.log(fragment.nodeType); // 11
+        console.log(Node.DOCUMENT_FRAGMENT_NODE); // 11
+
+        console.log(document.body.firstChild.nodeType); // 8
+        console.log(Node.COMMENT_NODE); // 8
+
+        divEl.nodeValue = "hello"
+        console.log(divEl.nodeValue);
+        console.log(document.body.childNodes);
+    </script>
+</body>
+</html>

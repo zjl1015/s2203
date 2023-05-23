@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div id="p-1">
+        <span>第一个span</span>
+    </div> -->
+    <div id="p-1"><span>第一个span</span></div>
+    <script>
+        const p1 = document.getElementById('p-1')
+        // const p1 = document.querySelector('#p-1')
+        console.log(p1.firstChild);
+        console.log(p1.firstChild.nodeName);
+        console.log(document.firstChild);
+        console.log(document.firstChild.nodeName);
+        // alert(document.firstChild.nodeName)
+    </script>
+</body>
+</html>

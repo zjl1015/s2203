@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 标准 DOM 树
+        const pElem = document.createElement('p')
+        // isConnected 判断节点是否与 DOM 相连接
+        console.log(pElem.isConnected); // false
+        document.body.appendChild(pElem)
+        console.log(pElem.isConnected); // true
+
+        // Shadow DOM 树
+        // 创建一个 shadow root
+        const shadow =document.body.attachShadow({mode:'open'})
+        const style = document.createElement('style')
+        console.log(style.isConnected); // false
+        style.textContent = `
+            .wrapper{
+                position:relative;
+            }
+            .info{
+                font-size:0.8rem;
+                width:200px;
+                dispaly:inline-block;
+                border:1px solid block;
+                padding:10px;
+                background:white;
+                border-radius:10px;
+                opacity:0;
+                transition:0.6s all;
+                position:absolute;
+                bottom:20px;
+                letf:10px;
+                z-index:3;
+            }
+        `
+        shadow.appendChild(style)
+        console.log(style.isConnected); // true
+
+    </script>
+</body>
+</html>
