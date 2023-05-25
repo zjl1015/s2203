@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>从下面选择一些文本</p>
+  <form>
+    <textarea name="t1" id="t1" cols="30" rows="10">
+      的历史上的当升科技的士速递多双卡双待会计电算多岁的肯定是尽快的思考的思考基督教上课时看到的是科技大道顺丰到付树控件的树控件上地街道撒大大撒多所看风景的会计师的肯定是的首科大厦看见了圣诞快乐近代史上的地方斯柯达是的撒所多多岁的肯定是
+    </textarea>
+    <textarea name="t2" id="t2" cols="30" rows="10">
+      淡蓝色的肯定是开酒店尽快动身肯定是科技的所得税SDK第三方接口的所得税法当升科技了圣诞快乐讲的是科技递四方速递看见了圣诞福利科技的说法会计电算水电费空间里的水都上课的说法的的第三方尽快动身可接受的接口的山东省考京东数科水电费空间的时刻SDK讲的是开电风扇肯定是会计师多岁的肯定是开始的发动机肯定是非
+    </textarea>
+    <div id="div">sdkdskdskdsfkdssdkdksdsk第三课时打开的框架山东科技水电费可接受的的上课圣诞快乐的所得税法框架撒大大撒肯定是圣诞节的山东省科技圣诞快乐大胜靠德树控件的上课的SDK所得税的空间是滴考的首科大厦看讲师快点解封SDK两居室的空间十点多舒服框架圣诞快乐讲的是会计电算第三节课SDK吉林省的空间神鼎飞丹砂</div>
+    <br>
+    <output name="o1">激活元素ID：<b id="activeE"></b></output>
+    <br>
+    <output name="o2">选择的文本：<b id="selectionText"></b></output>
+  </form>
+  <script>
+    const textarea1 = document.querySelector("#t1")
+    const textarea2 = document.querySelector("#t2")
+    const divEl = document.querySelector("#div")
+    function onMouseUp(e){
+      const activeTextarea = document.activeElement
+      console.log(activeTextarea);
+      console.log(activeTextarea.selectionStart)
+      console.log(activeTextarea.selectionEnd)
+      const text = activeTextarea.value.substring(activeTextarea.selectionStart,activeTextarea.selectionEnd)
+      console.log(text);
+      // console.log(window.getSelection());
+      // console.log(window.getSelection().baseNode.data.substring(window.getSelection().baseOffset,window.getSelection().focusOffset));
+      const activeE = document.querySelector("#activeE")
+      const selectionText = document.querySelector("#selectionText")
+      activeE.innerHTML = activeTextarea.id
+      selectionText.innerHTML = text
+    }
+    textarea1.addEventListener('mouseup',onMouseUp,false)
+    textarea2.addEventListener('mouseup',onMouseUp,false)
+    divEl.addEventListener('mouseup',onMouseUp,false)
+  </script>
+</body>
+
+</html>

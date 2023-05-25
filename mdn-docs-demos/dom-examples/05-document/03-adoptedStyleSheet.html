@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">123</div>
+  <div class="box2">456</div>
+  <div>dsddskj</div>
+
+  <div class="container">
+    <div class="son1">
+      <div class="grandson1"></div>
+      <div class="grandson2"></div>
+    </div>
+    <div class="son2"></div>
+  </div>
+  <script>
+    const sheet = new CSSStyleSheet()
+    sheet.replaceSync(".box {background-color:blue;width:300px;height:300px;}")
+    document.adoptedStyleSheets = [sheet]
+    sheet.insertRule(".box {color:red}")
+
+    const extraSheet = new CSSStyleSheet()
+    extraSheet.replaceSync(".box2 {width:200px;height:200px;background-color:orange;color:red}")
+    document.adoptedStyleSheets = [...document.adoptedStyleSheets,extraSheet]
+
+    const divEl = document.createElement("div")
+    const root = divEl.attachShadow({mode:'open'})
+    document.body.appendChild(divEl)
+    const pEl = document.createElement("p")
+    pEl.setAttribute("class","box")
+    root.appendChild(pEl)
+    root.adoptedStyleSheets = [sheet]
+
+
+
+
+    // body
+    console.log(document.body);
+    const newBody = document.createElement('body')
+    newBody.id = "abc"
+    // document.body = newBody
+
+    console.log(document.characterSet);
+    console.log(document.childElementCount);
+    console.log(document.children);
+
+    const container = document.querySelector(".container")
+    console.log(container.childElementCount);
+    console.log(container.children);
+
+  </script>
+</body>
+</html>
