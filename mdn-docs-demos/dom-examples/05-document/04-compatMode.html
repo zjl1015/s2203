@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>hello world</div>
+    <img src="https://img13.360buyimg.com/n7/jfs/t1/204573/11/34624/78619/646b395fF1364cd0b/909f3dee0d6bca11.jpg" alt="" srcset="">
+    <script async>
+        console.log(document.compatMode);
+        console.log(document.contentType);
+        console.log(document.cookie);
+        
+        document.cookie = "name = 张三"
+        document.cookie = "age = 18"
+        console.log(document.cookie);
+        console.log(document.currentScript);
+        if(document.currentScript.async){
+            console.log("当前脚本是异步的");
+        }else{
+            console.log("当前脚本是同步的");
+        }
+        // 当前文档所关联的window对象
+        console.log(document.defaultView);
+        // console.log(document.designMode);
+        // document.designMode = "on"
+    </script>
+
+    <script type="module">
+        import './my-module.mjs?name=zs';
+        console.log(import.meta);
+        console.log(new URL(import.meta.url).searchParams.get('name'));
+        console.log(document.currentScript);
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        container
+        <div class="son">son</div>
+    </div>
+    <ul class="wrapper">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        const container = document.querySelector(".container")
+        const son = document.querySelector(".son")
+        // const oldNode = container.removeChild(son)
+        if(son.parentNode){
+            son.parentNode.removeChild(son)
+        }
+
+        const ul = document.querySelector(".wrapper")
+        while(ul.firstChild){
+            ul.removeChild(ul.firstChild)
+        }
+    </script>
+</body>
+</html>

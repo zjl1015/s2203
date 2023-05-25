@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <div class="son"></div>
+    </div>
+    <div class="shadow-root"></div>
+    <script>
+        const box = document.querySelector('.box')
+        const son = document.querySelector('.son')
+        const shadowEl = document.querySelector('.shadow-root')
+        console.log(box.contains(son));
+        console.log(son.contains(box));
+
+        function isInPage(node){
+            return (node===document.body)?false:document.body.contains(node)
+        }
+        // 克隆的节点在插入文档前是没有父级节点的 也不存在于该文档
+        const boxClone = box.cloneNode(false)
+        console.log(isInPage(boxClone));
+
+        const root = son.getRootNode({composed:false})
+        console.log(root);
+        console.log(document);
+
+        const shadowRoot = shadowEl.attachShadow({mode:"open"})
+        shadowRoot.innerHTML = `
+            <style>div{background:#ff0000;}</style>
+            <div class="js-shadowChild">123</div>
+        `
+        const shadowChild = document.querySelector('.js-shadowChild')
+        console.log("shadowChild=>",shadowChild);
+        console.log(shadowChild.getRootNode());
+    </script>
+</body>
+</html>

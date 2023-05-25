@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form1">
+        <input type="text" name="name" id="name">
+    </form>
+
+    <form id="form2">
+        <input type="text" name="nickname" id="nickname">
+    </form>
+    <video id="v" src="../01-abort-api/sintel.mp4" controls></video>
+    <button onclick="fullScreen()">全屏</button>
+    <img width="200" height="200" src="http://doc.bufanui.com/static/images/logo.jpg" alt="">
+    <img width="200" height="200" src="http://doc.bufanui.com/static/images/logo.jpg" alt="">
+    <img width="200" height="200" src="http://doc.bufanui.com/static/images/logo.jpg" alt="">
+    <img width="200" height="200" src="http://doc.bufanui.com/static/images/logo.jpg" alt="">
+    <!-- <embed src="https://www.jd.com/" type="text/html"> -->
+    <script>
+        console.log(document.embeds);
+        console.log(document.firstElementChild);
+        console.log(document.fonts);
+        document.fonts.ready.then(function(){
+            console.log("字体加载完毕...");
+        })
+
+        console.log(document.forms);
+        console.log(document.forms[0].elements[0]);
+
+        console.log(document.fullscreenElement);
+        const video = document.getElementById('v')
+
+        function fullScreen(){
+            console.log(123);
+            if(document.fullscreenEnabled){
+                video.requestFullscreen()
+            }else{
+                console.log("你的浏览器不支持全屏");
+            }
+        }
+
+        console.log(document.hidden);
+
+        window.addEventListener("visibilitychange",function(){
+            console.log(document.hidden);
+        })
+       const imgs = document.getElementsByTagName('img')
+       console.log(document.images);
+       console.log(imgs);
+       console.log(document.images.item(0));
+
+       for(const img of document.images){
+        if(img.src === "xx.jpg"){
+            console.log("找到了...");
+        }else{
+            console.log("没找到");
+        }
+       }
+    </script>
+</body>
+</html>

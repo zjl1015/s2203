@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li id="li1">1</li>
+    </ul>
+    <div class="box">fkddsjdskdsfsd说多了都是泪大师傅大师傅进度较快的方式</div>
+    <div>上的喀什酱豆腐就爱上对方基督教的撒附件</div>
+    <div>四大皆空撒打算多发教科书的煎熬的色卡上</div>
+    <p>地点是圣诞节圣诞节的是会计</p>
+    <p>都多久是多久</p>
+    <p>sdljdjdsdjkdddfkjdk撒旦金克拉撒旦大苏打大大快递费多少订单</p>
+    <script>
+        const box = document.querySelector('.box')
+        const ul = document.querySelector("ul")
+        const li1 = document.getElementById("li1")
+        const newLi = document.createElement("li")
+        newLi.setAttribute("id","newLi")
+        newLi.appendChild(document.createTextNode("我是新的li"))
+
+        const oldNode = ul.replaceChild(newLi,li1)
+        console.log(oldNode);
+        // box.textContent = "hello world".repeat(100)
+        document.addEventListener('selectstart',function(e){
+            console.log("选择开始...",e);
+        },false)
+        document.addEventListener('selectionchange',function(e){
+            console.log("onChange...",e);
+            const selection = window.getSelection()
+            console.log("selection=>",selection);
+        },false)
+    </script>
+</body>
+</html>

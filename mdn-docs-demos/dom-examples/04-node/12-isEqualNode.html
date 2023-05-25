@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">第一个div</div>
+    <div>第二个div</div>
+    <div id="div1">第一个div</div>
+    <script>
+        const divs = document.querySelectorAll("div")
+        console.log(divs[0].isEqualNode(divs[1]));
+        console.log(divs[0].isEqualNode(divs[2]));
+        console.log(divs[1].isEqualNode(divs[2]));
+
+
+        console.log(divs[0].isSameNode(divs[0]));
+    </script>
+</body>
+</html>

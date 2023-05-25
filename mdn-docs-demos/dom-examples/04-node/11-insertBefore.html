@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="parentElement">
+    <span id="childElement">foo bar</span>
+   </div>
+   <script>
+    const newNode = document.createElement("span")
+    const parentDiv = document.getElementById("childElement").parentNode
+
+    let sp2 = document.getElementById("childElement")
+    // parentDiv.insertBefore(newNode,sp2)
+
+    // sp2 = undefined
+    // parentDiv.insertBefore(newNode,sp2)
+    
+    // sp2 = "undefined"
+    // parentDiv.insertBefore(newNode,sp2)
+    console.log(sp2.nextSibling);
+    // parentDiv.insertBefore(newNode,sp2.nextSibling)
+    parentDiv.insertBefore(newNode,parentDiv.firstChild)
+   </script>
+</body>
+</html>
