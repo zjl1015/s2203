@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>
+    dskjdskdsj第三课时大多是靠打底裤啥的接口第三节课山东科技十点多思考圣诞快乐大是大非首科大厦SDK都是记大数框架SDK硕大的山东快书待付款第三方接口SDKSDK山东科技，圣诞快乐山东科技当升科技是，的思考的思考的数据库，打开第三空手道科技，塞德里克当升科技第三方科技圣诞快乐讲的是分开的思考，的思考的思考的思考京东数科道口烧鸡快点解封，的思考的思考发多少会计会计，的思考的思考当升科技，第三方库第三方肯定是副科级，，的思考的思考山东科技道口烧鸡圣诞快乐讲的是会计电算咖啡机，的上课速度快科技，第三课时打开第三快捷键独守空房看电视剧科技的数据库打算复读机可视对讲空手道科技的境况，SDK当升科技第三方看电视剧看电视剧疯狂的会计师的空间发的思考接口的放假是
+  </p>
+  <p>
+    dskjdskdsj第三课时大多是靠打底裤啥的接口第三节课山东科技十点多思考圣诞快乐大是大非首科大厦SDK都是记大数框架SDK硕大的山东快书待付款第三方接口SDKSDK山东科技，圣诞快乐山东科技当升科技是，的思考的思考的数据库，打开第三空手道科技，塞德里克当升科技第三方科技圣诞快乐讲的是分开的思考，的思考的思考的思考京东数科道口烧鸡快点解封，的思考的思考发多少会计会计，的思考的思考当升科技，第三方库第三方肯定是副科级，，的思考的思考山东科技道口烧鸡圣诞快乐讲的是会计电算咖啡机，的上课速度快科技，第三课时打开第三快捷键独守空房看电视剧科技的数据库打算复读机可视对讲空手道科技的境况，SDK当升科技第三方看电视剧看电视剧疯狂的会计师的空间发的思考接口的放假是
+  </p>
+  <p>
+    dskjdskdsj第三课时大多是靠打底裤啥的接口第三节课山东科技十点多思考圣诞快乐大是大非首科大厦SDK都是记大数框架SDK硕大的山东快书待付款第三方接口SDKSDK山东科技，圣诞快乐山东科技当升科技是，的思考的思考的数据库，打开第三空手道科技，塞德里克当升科技第三方科技圣诞快乐讲的是分开的思考，的思考的思考的思考京东数科道口烧鸡快点解封，的思考的思考发多少会计会计，的思考的思考当升科技，第三方库第三方肯定是副科级，，的思考的思考山东科技道口烧鸡圣诞快乐讲的是会计电算咖啡机，的上课速度快科技，第三课时打开第三快捷键独守空房看电视剧科技的数据库打算复读机可视对讲空手道科技的境况，SDK当升科技第三方看电视剧看电视剧疯狂的会计师的空间发的思考接口的放假是
+  </p>
+
+  <div id="box">box</div>
+  <ul id="ul"></ul>
+  <button id="btn1">监听自定义事件</button>
+  <button id="btn2">触发自定义事件</button>
+  <button id="btn3">test</button>
+  <script>
+    function insertBreakAtPoint(e){
+      let range;
+      let textNode;
+      let offset;
+      if(document.caretPositionFromPoint){
+        // console.log("支持 caretPositionFromPoint");
+        range = document.caretPositionFromPoint(e.clientX,e.clientY);
+        textNode = range.offsetNode
+        offset = range.offset
+      }else if(document.caretRangeFromPoint){
+        // console.log("支持 caretRangeFromPoint");
+        range = document.caretRangeFromPoint(e.clientX,e.clientY)
+        // console.log("range==>",range);
+        textNode = range.startContainer
+        offset = range.startOffset
+      }else{
+        return
+      }
+
+      if(textNode.nodeType === 3){ // 文本节点
+        let replacement = textNode.splitText(offset)
+        let br = document.createElement('br')
+        textNode.parentNode.insertBefore(br,replacement)
+      }
+    }
+
+    // insertBreakAtPoint()
+
+    let p = document.getElementsByTagName('p')
+    for(const pImte of p){
+      pImte.addEventListener('click',insertBreakAtPoint,false)
+    }
+
+
+    const d =  document.open()
+    console.log("d==>",d);
+    document.write("<p>这是一个段落</p>")
+    document.close()
+
+    
+    const box = document.getElementById("box")
+    const attrNode = document.createAttribute("title")
+    attrNode.value = "123"
+    box.setAttributeNode(attrNode)
+    box.setAttribute("abc",123)
+    console.log(box.getAttribute("title"));
+
+
+    // const comment = document.createComment("这个是动态添加的注释")
+    // document.body.appendChild(comment)
+    
+    const docu = new DOMParser().parseFromString("<xml></xml>","application/xml")
+    const comment = docu.createComment("这是一条注释")
+    docu.querySelector("xml").appendChild(comment)
+    console.log(new XMLSerializer().serializeToString(docu));
+
+    const ul = document.getElementById("ul")
+    const broswers = ["Chrome","Firefox","Safari","Opera"]
+    const fragment = document.createDocumentFragment()
+    broswers.forEach(item=>{
+      const li = document.createElement("li")
+      li.textContent = item
+      fragment.appendChild(li)
+    })
+    ul.appendChild(fragment)
+
+
+    const expandingList = document.createElement("ul",{is:"expanding-list"})
+    console.log("expandingList===>",expandingList);
+    broswers.forEach(item=>{
+      const li = document.createElement("li")
+      li.textContent = item
+      expandingList.appendChild(li)
+    })
+    document.body.appendChild(expandingList)
+
+
+    // 创建一个自定义事件
+    const event = document.createEvent("Event");
+    event.initEvent("demo",true,true)
+    const btn1 = document.getElementById("btn1")
+    const btn2 = document.getElementById("btn2")
+    const btn3 = document.getElementById("btn3")
+    btn1.addEventListener('demo',()=>{
+      console.log("自定义事件触发了....");
+    })
+
+    btn2.addEventListener("click",()=>{
+      btn1.dispatchEvent(event)
+    })
+
+
+
+    const nodeIterator = document.createNodeIterator(document,NodeFilter.SHOW_ELEMENT,(node)=>node.nodeName.toLowerCase()=="p"?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT)
+    console.log(nodeIterator);
+
+    let pars = []
+    let currentNode ;
+    while((currentNode = nodeIterator.nextNode())){
+      pars.push(currentNode)
+    }
+
+    console.log(pars);
+  </script>
+</body>
+</html>

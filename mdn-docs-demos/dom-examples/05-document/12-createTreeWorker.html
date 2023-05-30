@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      /* transition: ; */
+      /* transform: rotate(45deg) skew(23deg) scale(1.1); */
+      transition: all 3s;
+    }
+  </style>
+</head>
+<body>
+  <p class="box">p</p>
+  <div>div</div>
+  <span>span</span>
+  <h1>h1</h1>
+  <a href="https://www.jd.com">京东</a>
+  <video src="../01-abort-api/sintel.mp4" id="video" controls></video>
+  <div class="test">1</div>
+  <div class="test">2</div>
+  <div class="test">3</div>
+  <div class="test">4</div>
+  <div class="test">5</div>
+  <div class="test">6</div>
+  <div class="test">7</div>
+  <div>8</div>
+  <script>
+    const treeWalker = document.createTreeWalker(document.body,NodeFilter.SHOW_ELEMENT,{
+      acceptNode(node){
+        return NodeFilter.FILTER_ACCEPT
+      }
+    })
+
+    let nodeList = []
+    let currentNode = treeWalker.currentNode
+    while(currentNode){
+      nodeList.push(currentNode)
+      currentNode = treeWalker.nextNode()
+    }
+    console.log(nodeList);
+    
+    console.log(document.elementFromPoint(20,30));
+    document.elementFromPoint(20,30).style.color="red"
+
+    // document.onclick = function(){
+    //   if(document.fullscreenElement){
+    //     document.exitFullscreen()
+    //     .then(()=>console.log("已经退出全屏"))
+    //     .catch(err=>console.log("err=>",err))
+    //   }else{
+    //     document.documentElement.requestFullscreen()
+    //   }
+    // }
+
+    const video = document.getElementById("video")
+    console.log("video=>",video);
+    const vid = document.querySelector("video")
+    console.log("vid=>",vid);
+
+    document.onclick = function(){
+      if(document.pictureInPictureElement){
+        document.exitPictureInPicture()
+        .then(()=>console.log("已经退出画中画模式"))
+        .catch(err=>console.log("err=>",err))
+      }else{
+        video.requestPictureInPicture()
+      }
+    }
+
+    const ani = new Animation()
+    // video.
+    console.log(document.getAnimations());
+
+    let divCollection = document.getElementsByClassName("test")
+    console.log(divCollection);
+
+    const divs = Array.prototype.filter.call(divCollection,(item)=>item.nodeName==="DIV")
+    console.log(divs);
+
+  </script>
+</body>
+</html>

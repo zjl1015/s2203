@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <iframe src="./09-styleSheets.html" id="iframe" frameborder="0"></iframe>
+  <div id="imgs"></div>
+  <script>
+    const iframe = document.querySelector("iframe")
+    const iframeImages = iframe.contentDocument.querySelectorAll("img")
+    const imgParent = document.getElementById("imgs")
+    console.log("iframeImages===>",iframeImages);
+    iframeImages.forEach(img=>{
+      console.log("img==>",img);
+      imgParent.appendChild(document.adoptNode(img))
+    })
+
+    // document.append("hello ")
+    const d =new Document()
+    const h = document.createElement("html")
+    const res = d.append(h)
+    console.log("res=>",res);
+
+
+
+  </script>
+</body>
+</html>

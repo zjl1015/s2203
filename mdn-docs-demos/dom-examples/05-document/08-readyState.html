@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .box{
+      width: 100px;
+      height: 2000px;
+      background-color: red;
+    }
+  </style>
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/react/18.2.0/cjs/react-jsx-dev-runtime.development.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.cjs.js"></script> -->
+</head>
+<body>
+  <div class="box"></div>
+  <button onclick="goTop()">滚动到顶部</button>
+  <script>
+    
+
+    document.onreadystatechange = function(){
+      switch(document.readyState){
+      case "loading":
+        console.log(document.readyState);
+        break;
+      
+      case "interactive":
+         const spanElem = document.createElement("span")
+         spanElem.textContent = "a span element"
+         document.body.appendChild(spanElem)
+        break;
+      
+      case "complete":
+        console.log("第一个样式表时："+document.styleSheets[0].cssRules[0].cssText);
+        break;
+      
+    }
+    }
+
+    console.log(document.referrer);
+    console.log(document.scripts);
+    console.log(document.scripts.length);
+    for (const s of document.scripts) {
+      console.log(s);
+    }
+
+    console.log(document.scrollingElement);
+  
+    function goTop(){
+      document.scrollingElement.scrollTop = "0px"
+    }
+
+    console.log(document.styleSheets);
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nihao</title>
+  <link rel="stylesheet" title="t" href="./01-test.css">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .demo{
+      width: 100px;
+      height: 200px;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <img src="http://doc.bufanui.com/static/images/logo.jpg" alt="">
+  <img src="http://doc.bufanui.com/static/images/logo.jpg" alt="">
+  <img src="http://doc.bufanui.com/static/images/logo.jpg" alt="">
+  <script>
+    const divElement = document.createElement("div")
+    divElement.style.width = "100px"
+    divElement.style.height = "100px"
+    document.body.appendChild(divElement)
+    console.log(document.styleSheets);
+
+    console.log(document.timeline);
+
+    console.log(document.title);
+    console.log(document.URL);
+    document.addEventListener("visibilitychange",()=>{
+      console.log(document.visibilityState);
+    })
+
+    
+
+  </script>
+</body>
+</html>

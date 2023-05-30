@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="https://www.baidu.com">百度</a>
+  <a href="https://www.jd.com">京东</a>
+  <video src="../01-abort-api/sintel.mp4" controls id="video"></video>
+  <button onclick="requestPictureInPicture()">画中画</button>
+  <button onclick="getPictureElement()">获取画中画元素</button>
+  <button onclick="lockVideo()">锁定video元素</button>
+  <!-- <embed src="https://www.jd.com"> -->
+
+  <embed type="video/webm"
+        src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+        width="250"
+        height="200">
+  <a href="./08-readyState.html">08</a>
+  <map>
+    <area shape="rect" coords="0,0,100,100" href="https://www.m.jd.com" alt="">
+  </map>
+  <script>
+    console.log(document.implementation);
+    console.log(document.implementation.hasFeature());
+    console.log(document.implementation.hasFeature("HTML","7.0"));
+    console.log(document.implementation.hasFeature("XML","7.0"));
+    console.log(document.lastElementChild);
+    console.log(new Date(document.lastModified));
+    console.log(Date.parse(document.lastModified));
+    console.log(document.links);
+
+    for (const link of document.links) {
+      // console.log(link.href);
+      const linkHref = document.createTextNode(link.href)
+      const brDom = document.createElement('br')
+      document.body.appendChild(linkHref)
+      document.body.appendChild(brDom)
+    }
+
+    console.log(document.location);
+    console.log(document.URL);
+
+   
+    console.log(document.pictureInPictureEnabled);
+    const vidoeElement = document.getElementById("video")
+    function requestPictureInPicture(){
+      if(document.pictureInPictureEnabled){
+        vidoeElement.requestPictureInPicture()
+      }else{
+        alert("您的浏览器不支持画中画模式...")
+      }
+    }
+
+    function getPictureElement(){
+      console.log(document.pictureInPictureElement);
+    }
+
+    async function lockVideo(){
+      await vidoeElement.requestPointerLock()
+      console.log(document.pointerLockElement);
+    }
+
+    console.log(document.plugins);
+    console.log(Navigator.plugins);
+    console.log(document.pointerLockElement);
+  </script>
+</body>
+</html>
